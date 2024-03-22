@@ -4,6 +4,7 @@ import shutil
 import zipfile
 from io import BytesIO
 
+import spaces
 import gradio as gr
 import imageio as imageio
 import numpy as np
@@ -45,6 +46,7 @@ default_bas_frame_near = 1
 default_bas_frame_far = 1
 
 
+@spaces.GPU
 def process_image(
     pipe,
     path_input,
@@ -87,6 +89,7 @@ def process_image(
     )
 
 
+@spaces.GPU
 def process_video(
     pipe,
     path_input,
@@ -184,6 +187,7 @@ def process_video(
     )
 
 
+@spaces.GPU
 def process_bas(
     pipe,
     path_input,
