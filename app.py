@@ -284,10 +284,6 @@ def run_demo_server(pipe):
     os.environ["GRADIO_ALLOW_FLAGGING"] = "never"
 
     gradio_theme = gr.themes.Default()
-    # gradio_theme.set(
-    #     section_header_text_size="20px",
-    #     section_header_text_weight="bold",
-    # )
 
     with gr.Blocks(
         theme=gradio_theme,
@@ -801,7 +797,8 @@ def main():
     CHECKPOINT = "prs-eth/marigold-v1-0"
     CHECKPOINT_UNET_LCM = "prs-eth/marigold-lcm-v1-0"
 
-    login(token=os.environ["HF_TOKEN_COLAB_RO"])
+    if "HF_TOKEN_LOGIN" in os.environ:
+        login(token=os.environ["HF_TOKEN_LOGIN"])
 
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
